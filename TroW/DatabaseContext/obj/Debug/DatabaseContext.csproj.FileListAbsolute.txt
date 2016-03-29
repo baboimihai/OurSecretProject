@@ -1,0 +1,16 @@
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\DatabaseContext\bin\Debug\DatabaseContext.dll.config
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\DatabaseContext\bin\Debug\DatabaseContext.dll
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\DatabaseContext\bin\Debug\DatabaseContext.pdb
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\DatabaseContext\bin\Debug\EntityFramework.dll
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\DatabaseContext\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\DatabaseContext\bin\Debug\SimpleInjector.dll
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\DatabaseContext\bin\Debug\SimpleInjector.Integration.Web.dll
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\DatabaseContext\bin\Debug\SimpleInjector.Integration.Web.Mvc.dll
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\DatabaseContext\bin\Debug\EntityFramework.xml
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\DatabaseContext\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\DatabaseContext\bin\Debug\SimpleInjector.xml
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\DatabaseContext\bin\Debug\SimpleInjector.Integration.Web.xml
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\DatabaseContext\bin\Debug\SimpleInjector.Integration.Web.Mvc.xml
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\DatabaseContext\obj\Debug\DatabaseContext.csprojResolveAssemblyReference.cache
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\DatabaseContext\obj\Debug\DatabaseContext.dll
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\DatabaseContext\obj\Debug\DatabaseContext.pdb

@@ -1,0 +1,15 @@
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\bin\Debug\Core.dll.config
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\bin\Debug\Core.dll
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\bin\Debug\Core.pdb
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\bin\Debug\EntityFramework.dll
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\bin\Debug\SimpleInjector.dll
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\bin\Debug\SimpleInjector.Integration.Web.dll
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\bin\Debug\SimpleInjector.Integration.Web.Mvc.dll
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\bin\Debug\EntityFramework.xml
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\bin\Debug\SimpleInjector.xml
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\bin\Debug\SimpleInjector.Integration.Web.xml
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\bin\Debug\SimpleInjector.Integration.Web.Mvc.xml
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\obj\Debug\Core.dll
+C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\obj\Debug\Core.pdb
