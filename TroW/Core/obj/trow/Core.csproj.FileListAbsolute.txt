@@ -18,3 +18,24 @@ C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\bin\trow\Simple
 C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\bin\trow\SimpleInjector.Integration.Web.xml
 C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\bin\trow\SimpleInjector.Integration.Web.Mvc.xml
 C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\obj\trow\Core.dll
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\bin\trow\Core.dll.config
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\bin\trow\Core.dll
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\bin\trow\EntityFramework.dll
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\bin\trow\EntityFramework.SqlServer.dll
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\bin\trow\MongoDB.Bson.dll
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\bin\trow\MongoDB.Driver.Core.dll
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\bin\trow\MongoDB.Driver.dll
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\bin\trow\MongoDB.Driver.Legacy.dll
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\bin\trow\SimpleInjector.dll
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\bin\trow\SimpleInjector.Integration.Web.dll
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\bin\trow\SimpleInjector.Integration.Web.Mvc.dll
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\bin\trow\EntityFramework.xml
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\bin\trow\EntityFramework.SqlServer.xml
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\bin\trow\MongoDB.Bson.xml
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\bin\trow\MongoDB.Driver.xml
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\bin\trow\MongoDB.Driver.Legacy.xml
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\bin\trow\SimpleInjector.xml
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\bin\trow\SimpleInjector.Integration.Web.xml
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\bin\trow\SimpleInjector.Integration.Web.Mvc.xml
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\obj\trow\Core.csprojResolveAssemblyReference.cache
+C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Core\obj\trow\Core.dll
