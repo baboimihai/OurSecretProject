@@ -76,6 +76,7 @@
     <Compile Include="DatabaseAcces\IRepository.cs" />
     <Compile Include="DatabaseAcces\Repository.cs" />
     <Compile Include="Domain\Customer.cs" />
+    <Compile Include="Domain\Statie.cs" />
     <Compile Include="Domain\TrainHistoryData.cs" />
     <Compile Include="Domain\Trasa.cs" />
     <Compile Include="Domain\Tren.cs" />

@@ -19,7 +19,7 @@ namespace TroW.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            _dataManagementService.UploadData(@"C:\2014.xml","2016","2016");
+            _dataManagementService.UploadData(@"C:\2016.xml","2016","2016");
             return View();
         }
 

@@ -22,7 +22,6 @@ namespace TroW
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             InjectorInitializer.Initialize();
-            AuthConfig.RegisterAuth();
         }
     }
 }

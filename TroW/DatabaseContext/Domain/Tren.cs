@@ -8,6 +8,7 @@ namespace DatabaseContext.Domain
 {
     public class Tren:DomainBase
     {
+
         public string CategorieTren { get; set; }
         public double KmCum { get; set; }
         public int Lungime { get; set; }

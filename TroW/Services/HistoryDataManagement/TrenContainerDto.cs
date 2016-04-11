@@ -9,6 +9,12 @@ namespace Services.HistoryDataManagement
 {
     public class TrenContainerDto:Tren
     {
-        public List<Trasa> Trase { get; set; } 
+        public List<TrasaDto> Trase { get; set; } 
+    }
+
+    public class TrasaDto : Trasa
+    {
+        public string DenStaDest { get; set; }
+        public string DenStaOrigine { get; set; }
     }
 }

@@ -78,6 +78,11 @@
     <Compile Include="HistoryDataManagement\TrenContainerDto.cs" />
     <Compile Include="Infrastructure\DependencyContainerMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RouteFinder\Dto\RouteFinderInputDto.cs" />
+    <Compile Include="RouteFinder\Dto\RouteFinderOutputDto.cs" />
+    <Compile Include="RouteFinder\Dto\StatieDto.cs" />
+    <Compile Include="RouteFinder\IRouteFinderService.cs" />
+    <Compile Include="RouteFinder\RouteFinderService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

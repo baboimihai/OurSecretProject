@@ -8,6 +8,8 @@ namespace DatabaseContext.Domain
 {
     public class Trasa:DomainBase
     {
+        public virtual Guid TrenId { get; set; }
+        public virtual Tren Tren { get; set; }
         public int Ajustari { get; set; }
         public int CodStaDest { get; set; }
         public int CodStaOrigine { get; set; }

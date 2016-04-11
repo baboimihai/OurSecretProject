@@ -12,7 +12,10 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("click ", "Index", "Home")</p>
+                    <p class="site-title">
+                        <img src="~/Images/train_icon.png" style="width: 100px"/>
+                        <a>Trow - un slogan captivant</a>
+                    </p>
                     
                 </div>
                 <div class="float-right">
@@ -30,7 +33,7 @@
             </div>
         </header>
     <div id="body">
-        <div class="float-left">
+        <div class=" content-wrapper float-left" style="display: inline-block; width: 300px;height: 550px">
             @Html.Partial("_NewsLettersPartial")
         </div>
         @RenderSection("featured", required: false)
