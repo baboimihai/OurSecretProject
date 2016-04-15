@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Services.HistoryDataManagement;
 
+
 namespace TroW.Areas.Admin.Controllers
 {
     public class HistoryDataManagementController : Controller
