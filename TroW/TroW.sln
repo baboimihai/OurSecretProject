@@ -18,6 +18,22 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Servic
 		{7D25C7D6-0322-4A08-A94D-536F36C4CD78} = {7D25C7D6-0322-4A08-A94D-536F36C4CD78}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagrams", "Diagrams", "{325C23A3-FE98-41DF-9FC7-7EFF241EE398}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Desktop\Trow-Diagrame\1.JPG = ..\..\..\..\Desktop\Trow-Diagrame\1.JPG
+		..\..\..\..\Desktop\Trow-Diagrame\13016851_367959033374451_231323337_o.png = ..\..\..\..\Desktop\Trow-Diagrame\13016851_367959033374451_231323337_o.png
+		..\..\..\..\Desktop\Trow-Diagrame\2.JPG = ..\..\..\..\Desktop\Trow-Diagrame\2.JPG
+		..\..\..\..\Desktop\Trow-Diagrame\3.JPG = ..\..\..\..\Desktop\Trow-Diagrame\3.JPG
+		..\..\..\..\Desktop\Trow-Diagrame\4.JPG = ..\..\..\..\Desktop\Trow-Diagrame\4.JPG
+		..\..\..\..\Desktop\Trow-Diagrame\Componente.png = ..\..\..\..\Desktop\Trow-Diagrame\Componente.png
+		..\..\..\..\Desktop\Trow-Diagrame\Componente_full.png = ..\..\..\..\Desktop\Trow-Diagrame\Componente_full.png
+		..\..\..\..\Desktop\Trow-Diagrame\Databases_PK_FK.png = ..\..\..\..\Desktop\Trow-Diagrame\Databases_PK_FK.png
+		..\..\..\..\Desktop\Trow-Diagrame\useCase1.jpg = ..\..\..\..\Desktop\Trow-Diagrame\useCase1.jpg
+		..\..\..\..\Desktop\Trow-Diagrame\useCase2.jpg = ..\..\..\..\Desktop\Trow-Diagrame\useCase2.jpg
+		..\..\..\..\Desktop\Trow-Diagrame\useCase3.jpg = ..\..\..\..\Desktop\Trow-Diagrame\useCase3.jpg
+		..\..\..\..\Desktop\Trow-Diagrame\useCase4.jpg = ..\..\..\..\Desktop\Trow-Diagrame\useCase4.jpg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

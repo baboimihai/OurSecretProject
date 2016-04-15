@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Services.Customer;
+using TroW.Models;
 
 namespace TroW.Controllers
 {
@@ -26,11 +27,10 @@ namespace TroW.Controllers
 
         public ActionResult Index()
         {
-            var x = customerServices.GetEmail();
             ViewBag.Message = "aaaModify this template to jump-start your ASP.NET MVC application.aaaaaaaa";
           //  var emails = CustomerService.GetEmail();
-          //  ViewBag.Message = emails.Count();
-            return View(x);
+
+            return View();
         }
 
         public ActionResult About()
