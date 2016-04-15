@@ -96,7 +96,7 @@ h5, h6 {
     max-width: 960px;
 }
 
-#body {
+#body_div {
     background-color: #efeeef;
     clear: both;
     padding-bottom: 35px;
@@ -212,7 +212,7 @@ ul#menu {
         background-image: -o-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
         background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #7ac0da), color-stop(1, #a4d4e6));
         background-image: -webkit-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-        background-image: linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
+        background-image: linear-gradient(#7ac0da, #7ac0da 0%, #a4d4e6 100%);
         color: #3e5667;
         padding: 20px 40px 30px 40px;
     }
@@ -700,12 +700,6 @@ tr.pager td {
         width: auto;
      }
 
-        section.feature img {
-            color: #999;
-            content: attr(alt);
-            font-size: 1.5em;
-            font-weight: 600;
-        }
 
     /* forms */
     input {

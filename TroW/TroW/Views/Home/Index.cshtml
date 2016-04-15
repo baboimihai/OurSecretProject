@@ -1,34 +1,33 @@
 ﻿@model List<string>
-<body>
-    <div class="input-group col-md-12">
-        <div>
-            <div class="col-lg-2" style="display: inline-block">
-             Statie de plecareaa
-            </div>
-
-            <div class="col-lg-6">
-                <input type="text" class="form-control" />
-            </div>
-        </div>
-        <div>
-            <div class="col-lg-2" style="display: inline-block">
-                Statie de sosire
-            </div>
-
-            <div class="col-lg-6">
-                <input type="text" class="form-control" />
-            </div>
+<h3>
+    Titlu index
+</h3>
+<div class="input-group col-md-12">
+    <div>
+        <div class="col-lg-2" style="display: inline-block">
+            Statie de plecareaa
         </div>
 
+        <div class="col-lg-6">
+            <input type="text" class="form-control"/>
+        </div>
     </div>
-</body>
+    <div>
+        <div class="col-lg-2" style="display: inline-block">
+            Statie de sosire
+        </div>
 
-<ul>
-    @{
-        foreach (var s in Model)
-        {
-            <li>@s</li>
+        <div class="col-lg-6">
+            <input type="text" class="form-control"/>
+        </div>
+    </div>
+</div>
+    <ul>
+        @{
+            foreach (var s in Model)
+            {
+                <li>@s</li>
+            }
         }
-    }
-    <li></li>
-</ul>
+    </ul>
+

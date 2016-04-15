@@ -6,6 +6,7 @@ using System.Text;
 using DatabaseContext.DatabaseAcces;
 using Services.Customer;
 using Services.HistoryDataManagement;
+using Services.RouteFinder;
 using SimpleInjector;
 using SimpleInjector.Extensions;
 using Container = SimpleInjector.Container;
@@ -18,6 +19,7 @@ namespace Services.Infrastructure
             container.RegisterConditional(typeof(IRepository<>), typeof(Repository<>), lifeStyle, x => !x.Handled);
             container.Register<ICustomerServices, CustomerService>(lifeStyle);
             container.Register<IHistoryDataManagementService,HistoryDataManagementService>(lifeStyle);
+            container.Register<IRouteFinderService,RouteFinderService>(lifeStyle);
         }
     }
 }

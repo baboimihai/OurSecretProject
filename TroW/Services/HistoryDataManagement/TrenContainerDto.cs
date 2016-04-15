@@ -14,6 +14,7 @@ namespace Services.HistoryDataManagement
 
     public class TrasaDto : Trasa
     {
+        public Guid TrenId { get; set; }
         public string DenStaDest { get; set; }
         public string DenStaOrigine { get; set; }
     }

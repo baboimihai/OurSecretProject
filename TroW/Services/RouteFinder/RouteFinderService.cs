@@ -4,7 +4,7 @@ using Services.RouteFinder.Dto;
 
 namespace Services.RouteFinder
 {
-    class RouteFinderService
+    public class RouteFinderService:IRouteFinderService
     {
         private readonly IRepository<TrainHistoryData> _trainHistoryDataRepository;
         private readonly IRepository<Tren> _trenRepository;
