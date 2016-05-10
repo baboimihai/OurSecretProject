@@ -11,5 +11,8 @@ namespace Services.RouteFinder.Dto
         public int UserId { get; set; }
         public List<int> StationToGoThrow { get; set; }
         public List<int> StationToSkip { get; set; }
+        public TimeSpan? OraPlecare { get; set; }
+        public TimeSpan? OraSosire { get; set; }
+        public DateTime? DataPlecare { get; set; }
     }
 }
