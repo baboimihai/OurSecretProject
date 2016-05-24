@@ -1,0 +1,289 @@
+﻿@model TroW.Models.AllRoutesResults
+<div class="col-lg-12">
+
+
+    <div>
+        <div class="ibox float-e-margins container" style="margin-left: 0px; margin-right: 0px; padding-left: 0; padding-right: 0px; width: 100%">
+
+            <div id="parent">
+                <div id="resizable" style="margin-left: -10px; border-right: 2px solid #337AB7;">
+                    <h4>
+                        Rezultatul cautarii
+
+                    </h4>
+
+
+                    <div class="pre-scrollable" style="max-height: 650px">
+                        @{
+                            foreach (var route in Model.Routes)
+                            {
+                                <div class="list-group-item routeButton btn-primary">
+                                    <ul class="list-group">
+                                        @for (int i = 0; i < route.Points.Count; i++)
+                                        {
+                                            <li class="@string.Concat("list-group-item ", i == 0 || i == route.Points.Count - 1 ? "" : "station-aux")" style="@string.Concat("display:", i == 0 || i == route.Points.Count - 1 ? "block" : "none")">
+                                                <span class="badge pull-left">@route.Points[i].OraAjungere</span>
+                                                <label style="color: darkblue">@route.Points[i].NumeStatie</label>
+                                                <span style="display: none">@route.Points[i].LatLong</span>
+                                            </li>
+                                        }
+                                    </ul>
+                                    <label style="color: darkgray">
+                                        Timpul total al calatoriei:
+                                        @route.TotalTime
+                                    </label>
+                                </div>
+                            }
+
+                        }
+                    </div>
+                </div>
+                <div id="mirror">
+                    <div id="map" style="height: 650px; width: 100%; -ms-border-radius: 25px; border-radius: 25px; margin-top: 40px"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal delete-Panel" id="statisticsModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="wrapper wrapper-content animated fadeInRight">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-content">
+                                    <h4 class="text-danger">Statistici</h4>
+                                    <dl class="dl-horizontal" id="statisticsContainer"></dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>
+                                            <button type="button" class="btn btn-default col-md-offset-4" data-dismiss="modal">Inapoi</button>
+                                        </dt>
+                                        <dd>
+                                            
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row col-md-offset-7 col-md-6">
+    <form action="@Url.Action("Route", "Home")" method="post" id="formInput">
+        @{
+            for (int i = 0; i < Model.Input.StationToGoThrow.Count; i++)
+            {
+                <input type="hidden" @string.Concat("name=[", i, "].CodStatie") value="@Model.Input.StationToGoThrow[i].StationCode" />
+                <input type="hidden" @string.Concat("name=[", i, "].Optiune") value="Via" />
+                <input type="hidden" @string.Concat("name=[", i, "].MinuteAsteptare") value="@Model.Input.StationToGoThrow[i].SencondsToWait" />
+            }
+            for (int i = 0; i < Model.Input.StationToSkip.Count; i++)
+            {
+                <input type="hidden" @string.Concat("name=\"[", i, "].CodStatie") value="@Model.Input.StationToGoThrow[i].StationCode" />
+                <input type="hidden" @string.Concat("name=\"[", i, "].Optiune") value="Exclude" />
+            }
+        }
+        <input type="hidden" name="startTime" value="@Model.Input.OraPlecare" />
+        <input type="hidden" name="endTime" value="@Model.Input.OraSosire" />
+        <input type="hidden" name="leavingDate" value="@Model.Input.DataPlecare" />
+        <input type="hidden" name="reverse" value="true" />
+        <button type="submit" class="btn btn-primary col-md-4 glyphicon glyphicon-repeat pull-left">&nbsp;Retur</button>
+    </form>
+
+    <button id="statistics" class="btn btn-info col-md-4 glyphicon glyphicon-stats pull-left" style="margin-left: 10px">&nbsp;Statistici</button>
+
+</div>
+<input type="hidden" id="StopOverStations" value='@Model.StopOverStations' />
+<script>
+
+    $(function (argument) {
+        $('[type="checkbox"]').bootstrapSwitch();
+    });
+
+    var directionsService;
+    var directionsDisplay;
+    var geocoder;
+    var array = [];
+    var map;
+    var markers = [];
+    $(document).ready(function () {
+        initMap();
+    });
+    $.fn.bootstrapSwitch.defaults.size = 'large';
+    $('.BSswitch').bootstrapSwitch({
+        'state': true,
+        "onText": '@Model.Routes[0].Points[0].NumeStatie - @Model.Routes[0].Points[Model.Routes[0].Points.Count-1].NumeStatie',
+        "offText": '@Model.Routes[0].Points[Model.Routes[0].Points.Count - 1].NumeStatie - @Model.Routes[0].Points[0].NumeStatie',
+        "text-label": 'back',
+        "handleWidth": 350
+
+    });
+
+    $('#TheCheckBox').on('switchChange.bootstrapSwitch', function () {
+
+    });
+
+    $("#resizable").resizable({
+        handles: "se"
+    });
+    $('#resizable').resize(function () {
+        $('#mirror').width($("#parent").width() - $("#resizable").width());
+    });
+    $(window).resize(function () {
+        $('#mirror').width($("#parent").width() - $("#resizable").width());
+        $('#resizable').height($("#parent").height());
+    });
+
+    var image = {
+        url: "http://www.trow.ro/Images/trainStation.png",
+        // This marker is 20 pixels wide by 32 pixels high.
+        size: new google.maps.Size(25, 25),
+        // The origin for this image is (0, 0).
+        origin: new google.maps.Point(0, 0),
+        // The anchor for this image is the base of the flagpole at (0, 32).
+        anchor: new google.maps.Point(0, 25)
+    };
+    function fixedEncodeURI(str) {
+        return encodeURI(str).replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%20/, ' ');
+    }
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 2,
+            center: { lat: 45.9925675, lng: 25.9107401 }
+        });
+        directionsService = new google.maps.DirectionsService;
+        directionsDisplay = new google.maps.DirectionsRenderer;
+        geocoder = new google.maps.Geocoder();
+
+        directionsDisplay.setMap(map);
+
+    }
+    function calculateAndDisplayRoute(directionsService, directionsDisplay, start, stop, waypts) {
+        directionsService.route({
+            origin: start,
+            waypoints: waypts,
+            destination: stop,
+            travelMode: google.maps.TravelMode.DRIVING
+        }, function (response, status) {
+            if (status === google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+    }
+
+    $('.routeButton').click(function (e) {
+        $(".station-aux").hide();
+        var that = $(this);
+        var elements = that.children();
+        var locations = [];
+        var locationsNames = [];
+        var locationsHours = [];
+        var stopOverStations = $("#StopOverStations").val();
+        elements.children().each(function () {
+            var element = $(this);
+            element.show();
+            var values = element.text().split("\n");
+            var statie = values[2].trim();
+            var longLatString = values[3].trim();
+            var lat = parseFloat(longLatString.split(" ")[0].substring(0, longLatString.split(" ")[0].length - 1));
+            var lng = parseFloat(longLatString.split(" ")[1]);
+            var currentLocation;
+            if (!isNaN(lat) || !isNaN(lng)) {
+                currentLocation = new google.maps.LatLng(lat, lng);
+            } else {
+                currentLocation = String(statie + "+Romania");
+            }
+
+            locations.push(currentLocation);
+            locationsNames.push(statie);
+            locationsHours.push(values[1].trim());
+        });
+
+        var waypts = [];
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+        }
+        for (var i = 0; i < locations.length; i++) {
+
+            var stopOverA = false;
+            if (stopOverStations.indexOf(locationsNames[i]) > -1) {
+                stopOverA = true;
+
+            }
+            waypts.push({
+                location: locations[i],
+                stopover: stopOverA
+            });
+        }
+
+        var start = locations[0];
+
+        var stop = locations[locations.length - 1];
+        calculateAndDisplayRoute(directionsService, directionsDisplay, start, stop, waypts);
+        for (var i = 0; i < locations.length; i++) {
+            var waypointsText = "";
+            if (i < locations.length - 1) {
+                waypointsText = 'Cu directia ' + locationsNames[i + 1];
+            }
+            var marker;
+            if (stopOverStations.indexOf(locationsNames[i]) > -1) {
+                marker = new google.maps.Marker({
+                    position: locations[i],
+                    map: map,
+                    title: locationsNames[i] + ' \n Ajunge la ora: ' + locationsHours[i] + '\n ' + waypointsText
+                });
+            } else {
+                marker = new google.maps.Marker({
+                    position: locations[i],
+                    map: map,
+                    icon: image,
+                    title: locationsNames[i] + ' \n Ajunge la ora: ' + locationsHours[i] + '\n ' + waypointsText
+                });
+            }
+            markers.push(marker);
+        }
+    });
+    serialize = function(obj, prefix) {
+        var str = [];
+        for(var p in obj) {
+            if (obj.hasOwnProperty(p)) {
+                var k = prefix ? prefix + "[" + p + "]" : p, v = obj[p];
+                str.push(typeof v == "object" ?
+                  serialize(v, k) :
+                  encodeURIComponent(k) + "=" + encodeURIComponent(v));
+            }
+        }
+        return str.join("&");
+    }
+    $("#reverseRoute").click(function () {
+        var jsonObjectInput = @Html.Raw(Json.Encode(Model.Input));
+        jsonObjectInput.Return = true;
+        document.location.href = "http://www.trow.ro/home/route" + "?" + serialize(jsonObjectInput);
+    });
+    $("#statistics").click(function () {
+        $("#statisticsModal").show();
+        $('#statisticsModal').modal();
+
+        $.ajax({
+            type: "Get",
+            url: "@(Url.Action("Statistics", "Home"))",
+            data:$('#formInput').serialize(),
+            success: function (view) {
+                var container = $("#statisticsContainer");
+                container.empty();
+                container.append(view);
+            },
+            error: function () {
+                toastr.warning("Statistici", "Nu au putut fi incarcate!");
+            }
+        });
+    });
+</script>

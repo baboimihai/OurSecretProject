@@ -44,8 +44,6 @@ C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Services\bin\trow\SimpleInj
 C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Services\bin\trow\SimpleInjector.Integration.Web.Mvc.xml
 C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Services\obj\trow\Services.csprojResolveAssemblyReference.cache
 C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\Services\obj\trow\Services.dll
-C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\obj\trow\Services.csprojResolveAssemblyReference.cache
-C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\obj\trow\Services.dll
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\trow\Services.dll.config
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\trow\Services.dll
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\trow\Core.dll
@@ -56,6 +54,7 @@ C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\trow\MongoDB.Bs
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\trow\MongoDB.Driver.Core.dll
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\trow\MongoDB.Driver.dll
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\trow\MongoDB.Driver.Legacy.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\trow\MoreLinq.dll
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\trow\SimpleInjector.dll
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\trow\SimpleInjector.Integration.Web.dll
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\trow\SimpleInjector.Integration.Web.Mvc.dll
@@ -64,6 +63,9 @@ C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\trow\EntityFram
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\trow\MongoDB.Bson.xml
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\trow\MongoDB.Driver.xml
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\trow\MongoDB.Driver.Legacy.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\trow\MoreLinq.xml
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\trow\SimpleInjector.xml
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\trow\SimpleInjector.Integration.Web.xml
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\trow\SimpleInjector.Integration.Web.Mvc.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\obj\trow\Services.csprojResolveAssemblyReference.cache
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\obj\trow\Services.dll

@@ -1,0 +1,87 @@
+﻿@model List<TroW.Models.TrainHistoryDataViewModel>
+@using System.Web.UI.WebControls
+@{
+    ViewBag.Title = "Hărți";
+}
+<h4 style="display: none">Hărți</h4>
+@using (Html.BeginForm("Maps", "HistoryDataManagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
+        <div class="col-md-offset-4 col-md-5">
+        <div class="form-group">
+            <div class="col-md-2">
+                <label class="control-label"></label>
+            </div>
+            <div class="col-md-4">
+                @Html.Editor("nume", new {@class = "form-control"})
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2">
+                <label class="control-label">Identificator</label>
+            </div>
+            <div class="col-md-4">
+                @Html.Editor("identificator", new {@class = "form-control"})
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2">
+                <label class="control-label">File url </label>
+            </div>
+            <div class="col-md-2">
+                @Html.Editor("fileUrl", new {@class = "form-control"})
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Trimite date" class="btn btn-primary col-md-offset-3" />
+        </div>
+    </div>
+        <div class="col-md-offset-3 col-md-5">
+            <table class="table">
+                <thead>
+                <tr>
+                    <td>Nume</td>
+                    <td>Identificator</td>
+                    <td>Data incarcarii</td>
+                    <td>Activ</td>
+                </tr>
+                </thead>
+                @foreach (var data in Model)
+                {
+                    <tr>
+                        <td>@data.Name</td>
+                        <td>@data.YearIdentifier</td>
+                        <td>@data.DateUploaded.ToShortDateString()</td>
+                        <td><input type="checkbox" value='@data.IsActive' @(data.IsActive ? string.Concat("checked=","checked") : String.Empty) onclick="changeStatusFor('@data.YearIdentifier')"/></td>
+                    </tr>
+                }
+            </table>
+
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+
+    $('input[type=file]').change(function () {
+        console.log(this.files[0].mozFullPath);
+    });
+    function changeStatusFor(data) {
+        var dataToSend = {
+            "yearIdentifier": data
+        };
+        $.ajax({
+            async: false,
+            cache: false,
+            type: "POST",
+            url: "@(Url.Action("MapsChangeYearStatus", "HistoryDataManagement"))",
+            data: dataToSend,
+            success: function (data) {
+                location.reload();
+            }
+        });
+    }
+</script>

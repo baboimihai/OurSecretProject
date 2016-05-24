@@ -31,6 +31,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'trow|AnyCPU'">
     <OutputPath>bin\trow\</OutputPath>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -52,6 +53,9 @@
     <Reference Include="MongoDB.Driver.Legacy">
       <HintPath>..\packages\mongocsharpdriver.2.2.3\lib\net45\MongoDB.Driver.Legacy.dll</HintPath>
     </Reference>
+    <Reference Include="MoreLinq">
+      <HintPath>..\packages\morelinq.1.4.0\lib\net35\MoreLinq.dll</HintPath>
+    </Reference>
     <Reference Include="SimpleInjector">
       <HintPath>..\packages\SimpleInjector.3.1.2\lib\net45\SimpleInjector.dll</HintPath>
     </Reference>
@@ -71,11 +75,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customer\CustomerService.cs" />
-    <Compile Include="Customer\ICustomerServices.cs" />
+    <Compile Include="CustomerService\CustomerDto.cs" />
+    <Compile Include="CustomerService\CustomerService.cs" />
+    <Compile Include="CustomerService\ICustomerServices.cs" />
+    <Compile Include="HistoryDataManagement\Dto\SearchedHistoryLocationsType.cs" />
+    <Compile Include="HistoryDataManagement\Dto\StatisticsDto.cs" />
+    <Compile Include="HistoryDataManagement\Dto\TrainHistoryDataDto.cs" />
+    <Compile Include="HistoryDataManagement\Dto\UserHistorySearchedRecordDto.cs" />
     <Compile Include="HistoryDataManagement\HistoryDataManagementService.cs" />
     <Compile Include="HistoryDataManagement\IHistoryDataManagementService.cs" />
-    <Compile Include="HistoryDataManagement\TrenContainerDto.cs" />
+    <Compile Include="HistoryDataManagement\Dto\NewsLetterDto.cs" />
+    <Compile Include="HistoryDataManagement\Dto\StatieDto.cs" />
+    <Compile Include="HistoryDataManagement\Dto\TrenContainerDto.cs" />
+    <Compile Include="Infrastructure\Cryptography.cs" />
     <Compile Include="Infrastructure\DependencyContainerMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RouteFinder\Dto\RouteFinderInputDto.cs" />

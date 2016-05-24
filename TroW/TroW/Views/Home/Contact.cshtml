@@ -1,50 +1,85 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Contact";
+
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>@ViewBag.Message</h2>
-</hgroup>
+<div class="col-md-12">
+    <div class="ibox-title">
+        <h3>Pagina de contact</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div id="map" style="height: 450px; width: 170%; -ms-border-radius: 25px; border-radius: 25px;"></div>
+        </div>
+        <div class="col-md-7">
+            <form class="form-horizontal" method="post">
+                <fieldset>
 
-<section class="contact">
-    <header>
-        <h3>Phone</h3>
-    </header>
-    <p>
-        <span class="label">Main:</span>
-        <span>425.555.0100</span>
-    </p>
-    <p>
-        <span class="label">After Hours:</span>
-        <span>425.555.0199</span>
-    </p>
-</section>
+                    <div class="form-group">
+                        <span class="col-md-1 col-md-offset-4 text-center label-in-line">Prenume</span>
+                        <div class="col-md-7">
+                            <input id="fname" name="FirstName" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span class="col-md-1 col-md-offset-4 text-center label-in-line">Nume</span>
+                        <div class="col-md-7">
+                            <input id="lname" name="LastName" type="text" class="form-control">
+                        </div>
+                    </div>
 
-<section class="contact">
-    <header>
-        <h3>Email</h3>
-    </header>
-    <p>
-        <span class="label">Support:</span>
-        <span><a href="mailto:Support@example.com">Support@example.com</a></span>
-    </p>
-    <p>
-        <span class="label">Marketing:</span>
-        <span><a href="mailto:Marketing@example.com">Marketing@example.com</a></span>
-    </p>
-    <p>
-        <span class="label">General:</span>
-        <span><a href="mailto:General@example.com">General@example.com</a></span>
-    </p>
-</section>
+                    <div class="form-group">
+                        <span class="col-md-1 col-md-offset-4 text-center label-in-line">Email</span>
+                        <div class="col-md-7">
+                            <input id="email" name="Email" type="text" class="form-control">
+                        </div>
+                    </div>
 
-<section class="contact">
-    <header>
-        <h3>Address</h3>
-    </header>
-    <p>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399
-    </p>
-</section>
+                    <div class="form-group">
+                        <span class="col-md-1 col-md-offset-4 text-center label-in-line">Telefon</span>
+                        <div class="col-md-7">
+                            <input id="phone" name="Phone" type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span class="col-md-1 col-md-offset-4 text-center label-in-line">Mesaj</span>
+                        <div class="col-md-7">
+                            <textarea class="form-control" id="message" name="Message" rows="7"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">Trimite</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="sended" value="@ViewBag.Success.ToString()"/>
+<script>
+    var map;
+    $(document).ready(function() {
+        initMap();
+        if ($("#sended").val() === "True") {
+            toastr.success("Success", "Notificarea a fost trimisa");
+        }
+    });
+
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 17,
+            center: { lat: 47.1737914, lng: 27.5731415 }
+        });
+        var marker = new google.maps.Marker({
+            position: { lat: 47.1740161, lng: 27.5748392 },
+            map: map,
+            title: 'Trow office'
+        });
+    }
+</Script>

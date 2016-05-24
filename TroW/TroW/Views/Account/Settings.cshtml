@@ -1,0 +1,78 @@
+﻿@model TroW.Models.Account
+@{
+    ViewBag.Title = "Setari Cont";
+}
+
+<h4 style="display: none">Setari cont</h4>
+
+<div class="col-md-9">
+    @using (Html.BeginForm())
+    {
+
+        <div class="container">
+            <div id="passwordForgatResended" style="margin-top: 50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+
+                    </div>
+
+                    <div style="padding-top: 30px" class="panel-body">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Prenume</label>
+                            <div class="col-md-9">
+                                <input name="FirstName" type="text" class="form-control" value="@Model.FirstName">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-top: 30px" class="panel-body">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Nume</label>
+                            <div class="col-md-9">
+                                <input name="LastName" type="text" class="form-control" value="@Model.LastName">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-top: 30px" class="panel-body">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Email</label>
+                            <div class="col-md-9">
+                                <input name="Email" type="text" class="form-control" value="@Model.Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-top: 30px" class="panel-body">
+                        <div class="form-group">
+                            <label  class="col-md-3 control-label">Parola nouă</label>
+                            <div class="col-md-9">
+                                <input name="Password" type="password" class="form-control" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-top: 30px" class="panel-body">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Repetare parolă</label>
+                            <div class="col-md-9">
+                                <input name="Password1" type="password" class="form-control" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">Salvează</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<input type="hidden" id="sended" value="@ViewBag.Saved.ToString()" />
+<script>
+    var map;
+    $(document).ready(function () {
+        if ($("#sended").val() === "True") {
+            toastr.success("Success", "Setarile au fost salvate!");
+        }
+    });
+</script>

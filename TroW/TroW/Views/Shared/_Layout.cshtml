@@ -1,58 +1,157 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>@ViewBag.Title  Trow</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
-    <div>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">
+﻿@using TroW.Identity
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title Trow</title>
+    @Styles.Render("~/Content/css")
 
-                        <img src="~/Images/train_icon.png" style="width: 130px;display: inline;" alt=""/>
-                        <a style="width: 130px;display: inline;">Find the route with one click</a>
-                    </p>
-                    
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        <h3></h3>
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Acasa", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Despre", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="../../Content/bootstrap/bootstrap.min.css">
+    <link href="../../Content/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
+    <link href="../../Content/bootstrap/clockpicker.css" rel="Stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="../../Content/bootstrap/toastr.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../Content/bootstrap/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="../../Content/bootstrap/bootstrap-switch.min.css">
+
+    
+    <script src="../../Scripts/jquery-1.9.1.min.js"></script>
+    <script src="../../Scripts/jquery-ui.min.js"></script>
+    <script src="../../Scripts/bootstrap.min.js"></script>
+    <script src="../../Scripts/clockpicker.js"></script>
+    <script src="../../Scripts/toastr.min.js"></script>
+    <script src="../../Scripts/jquery.dataTables.min.js"></script>
+    <script src="../../Scripts/bootstrap-switch.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGs7XvCxSZawUe7UJeb7-VH6V49diY-ck"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p class="site-title">
+
+                    <img src="~/Images/train_icon.png" style="width: 130px; display: inline;" alt="" />
+                    <a style="width: 130px; display: inline;">Găsește ruta cu un singur click!</a>
+                </p>
+
+            </div>
+            <div class="float-right" style="margin-bottom: -25px">
+                <section id="login">
+                    <h1 style="display: none">Login section</h1>
+
+                    @if (Identity.Current.Customer != null)
+                    {
+                        <label>@string.Concat("Buna, ", Identity.Current.Customer.FirstName, " !")</label>
+                        <label class="glyphicon glyphicon-off" style="color: #337ab7; margin-right: -2px"></label> <a href='@Url.Action("LogOut", "Home")' style="margin-left: 0">Deconectare</a>
+                    }
+                    else
+                    {
+                        <ul>
+
+                            <li><label class="glyphicon glyphicon-log-in" style="color: #337ab7"></label>@Html.ActionLink("Conectează-te", "Login", "Home")</li>
                         </ul>
-                    </nav>
-                </div>
+                    }
+                </section>
+                <nav class="navbar">
+                    <ul id="menu">
+                        <li><label class="glyphicon glyphicon-home" style="color: #337ab7"></label>@Html.ActionLink("Acasă", "Index", "Home")</li>
+                        <li><label class="glyphicon glyphicon-info-sign" style="color: #337ab7"></label>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        @if (Identity.Current.Customer != null)
+                        {
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user" style="color: #337ab7"></span>@Identity.Current.Customer.FirstName<span class="caret"></span></a>
+                                <ul class="dropdown-menu" style="left: -110px">
+                                    <li>@Html.ActionLink("Ultimele căutări", "UserSearchHistory", "Account")</li>
+                                    <li>@Html.ActionLink("Setări cont", "Settings", "Account")</li>
+                                </ul>
+                            </li>
+
+                        }
+                        @if (Identity.Current.Customer != null && Identity.Current.IsAdmin)
+                        {
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-eye-open" style="color: #337ab7"></span>Admin<span class="caret"></span></a>
+                                <ul class="dropdown-menu" style="left: -110px">
+                                    <li>@Html.ActionLink("Noutăți", "NewsLetters", "HistoryDataManagement")</li>
+                                    <li>@Html.ActionLink("Localizare gări", "Locations", "HistoryDataManagement")</li>
+                                    <li>@Html.ActionLink("Rute anuale ", "Maps", "HistoryDataManagement")</li>
+                                </ul>
+                            </li>
+                        }
+
+                    </ul>
+                </nav>
             </div>
-        </header>
-        <div id="body_div">
-            <div class=" content-wrapper float-left" style="display: inline-block; width: 300px;height: 550px">
-                @Html.Partial("_NewsLettersPartial")
-            </div>
-            @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-                
-                @RenderBody()
-            </section>
         </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - Trow by students of Alexandru Ioan Cuza</p>
-                </div>
+    </header>
+    <main id="body_div" class="col-lg-12 " style="min-height: 800px;">
+
+        <button id="resizeNewsLetterBig" class="glyphicon glyphicon glyphicon-resize-full pull-left" onclick="resizeNewsLetter('big')" data-toggle="popover" title="Noutati" data-content="Apasati butonul pentru maximizare!" style="display: none"></button>
+        <div class="col-md-2" id="_partial_newsLettersPartial" style="padding-left: 5px;">
+            <button id="resizeNewsLetterSmall" class="glyphicon glyphicon glyphicon-resize-small pull-right" onclick="resizeNewsLetter('small')" data-toggle="popover" title="Noutati" data-content="Apasati butonul  pentru minimizare!" style=""></button>
+            <div style="margin-top: 40px; margin-left: 0px" class="pre-scrollable" id="NewsLettersPartial">
             </div>
-        </footer>
+        </div>
 
-        @Scripts.Render("~/bundles/jquery")
+        <section class="col-md-10 main-content clear-fix" id="_partial_main_Content">
+            @RenderBody()
+        </section>
+    </main>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - Trow de studenții de la Alexandru Ioan Cuza</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        $(document).ready(function () {
+            LoadNewsLetters();
+            $('[data-toggle="popover"]').popover({ trigger: "hover" });
+        });
+        $(window).resize(function () {
+            if ($('#map').length)
+                google.maps.event.trigger(map, "resize");
+        });
+        function resizeNewsLetter(toView) {
+            if (toView === "small") {
+                $("_partial_newsLettersPartial").hide();
+                $("#resizeNewsLetterSmall").hide();
+                $("#resizeNewsLetterBig").show();
+                $("#_partial_main_Content").removeClass("col-md-10");
+                $("#_partial_main_Content").addClass("col-md-12");
 
-    </div>
+            } else {
+                $("#_partial_newsLettersPartial").show();
+                $("#resizeNewsLetterSmall").show();
+                $("#resizeNewsLetterBig").hide();
+                $("#_partial_main_Content").removeClass("col-md-12");
+                $("#_partial_main_Content").addClass("col-md-10");
+                //$('div#map').width('100%');
+            }
+            $(window).trigger('resize');
+        }
+        
+        function LoadNewsLetters() {
+
+            $.ajax({
+                async: false,
+                cache: false,
+                type: "GET",
+                url: "@(Url.Action("_NewsLettersPartial", "Home"))",
+                success: function (data) {
+                    var container = $("#NewsLettersPartial");
+                    container.empty();
+                    container.append(data);
+                }
+
+            });
+        }
+    </script>
+</body>
+
+
 </html>

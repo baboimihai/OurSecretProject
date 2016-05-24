@@ -14,3 +14,28 @@ C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\bin\Release\Sim
 C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\obj\Release\Core.dll
 C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\obj\Release\Core.pdb
 C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Core\obj\Release\Core.csprojResolveAssemblyReference.cache
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\Core.dll.config
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\Core.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\Core.pdb
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\EntityFramework.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\MongoDB.Bson.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\MongoDB.Driver.Core.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\MongoDB.Driver.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\MongoDB.Driver.Legacy.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\MoreLinq.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\SimpleInjector.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\SimpleInjector.Integration.Web.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\SimpleInjector.Integration.Web.Mvc.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\EntityFramework.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\MongoDB.Bson.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\MongoDB.Driver.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\MongoDB.Driver.Legacy.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\MoreLinq.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\SimpleInjector.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\SimpleInjector.Integration.Web.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\bin\Release\SimpleInjector.Integration.Web.Mvc.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\obj\Release\Core.csprojResolveAssemblyReference.cache
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\obj\Release\Core.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Core\obj\Release\Core.pdb

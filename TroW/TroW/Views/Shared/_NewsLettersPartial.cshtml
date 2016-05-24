@@ -1,6 +1,18 @@
-﻿<ul>
-    <li>ceva</li>
-    <li>asa</li>
-    <li>gass</li>
-    <li>gasg</li>
-</ul>
+﻿@using TroW.Models
+@model List<NewsLetterViewModel>
+@{
+    foreach (var message in Model)
+    {
+        <div class="list-group">
+            <a href="#" class="list-group-item active">
+                <h4 class="list-group-item-heading">@message.Header</h4>
+                <p class="list-group-item-text">
+                    @message.Message
+                </p>
+            </a>
+        </div>
+    }
+}
+
+
+

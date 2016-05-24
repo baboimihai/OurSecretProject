@@ -25,6 +25,11 @@ namespace DatabaseContext.DatabaseAcces
             entity.Id = Guid.NewGuid();
             return collection.Insert(entity).UpdatedExisting;
         }
+        public bool Add(TEntity entity,Guid id)
+        {
+            entity.Id =id;
+            return collection.Insert(entity).UpdatedExisting;
+        }
 
         public bool Update(TEntity entity)
         {

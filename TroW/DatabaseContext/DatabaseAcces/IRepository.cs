@@ -9,6 +9,7 @@ namespace DatabaseContext.DatabaseAcces
     public interface IRepository<TEntity> where TEntity : DomainBase 
     {
         bool Add(TEntity entity);
+        bool Add(TEntity entity,Guid id);
         bool Update(TEntity entity);
         bool Delete(TEntity entity);
         IList<TEntity> GetQuery(Expression<Func<TEntity, bool>> predicate);

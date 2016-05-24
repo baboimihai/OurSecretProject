@@ -9,5 +9,6 @@ namespace TroW.Models
     {
         public int CodStatie { get; set; }
         public string Optiune { get; set; }
+        public int MinuteAsteptare { get; set; }
     }
 }

@@ -18,3 +18,32 @@ C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Services\bin\Release
 C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Services\obj\Release\Services.csprojResolveAssemblyReference.cache
 C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Services\obj\Release\Services.dll
 C:\Users\Baboias\documents\visual studio 2013\Projects\TroW\Services\obj\Release\Services.pdb
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\Services.dll.config
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\Services.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\Services.pdb
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\Core.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\DatabaseContext.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\EntityFramework.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\MongoDB.Bson.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\MongoDB.Driver.Core.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\MongoDB.Driver.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\MongoDB.Driver.Legacy.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\MoreLinq.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\SimpleInjector.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\SimpleInjector.Integration.Web.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\SimpleInjector.Integration.Web.Mvc.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\Core.pdb
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\DatabaseContext.pdb
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\EntityFramework.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\MongoDB.Bson.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\MongoDB.Driver.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\MongoDB.Driver.Legacy.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\MoreLinq.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\SimpleInjector.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\SimpleInjector.Integration.Web.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\bin\Release\SimpleInjector.Integration.Web.Mvc.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\obj\Release\Services.csprojResolveAssemblyReference.cache
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\obj\Release\Services.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\Services\obj\Release\Services.pdb

@@ -1,0 +1,35 @@
+﻿@model List<TroW.Models.Statistics>
+
+<h3> Tot cele mai rapide rute</h3>
+<table class="table table-striped table-bordered table-hover locations-table">
+    <thead>
+        <tr>
+            @{
+                foreach (var year in Model)
+                {
+                    <th >
+                        
+                    </th>
+                }
+
+            }
+
+        </tr>
+    </thead>
+    <tbody>
+        @for (int index = 0; index < Model.Count; index++)
+        {
+            <tr>
+                <td>
+                    <label class="control-label">@Model[index].YearIdentifier</label>
+                </td>
+                
+                @foreach (var route in Model[index].TotalDuration)
+                {
+                    <td>@route.Duration</td>
+                }
+            </tr>
+
+        }
+        </tbody>
+    </table>

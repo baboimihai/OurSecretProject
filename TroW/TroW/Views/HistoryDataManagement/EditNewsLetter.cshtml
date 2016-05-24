@@ -1,0 +1,94 @@
+﻿@model TroW.Models.NewsLetterViewModel
+@{
+    ViewBag.Title = "Editeaza NewsLetter";
+}
+
+<h2>Editare noutate</h2>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-horizontal">
+                            @Html.HiddenFor(model => model.Id)
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">Subiect</label>
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextAreaFor(model => model.Header, 5, 40, new { @class = "form-control m-b" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">Mesaj</label>
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextAreaFor(model => model.Message, 5, 40, new { @class = "form-control m-b" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Salvează" class="btn btn-primary" />
+                                    @Html.ActionLink("Înapoi", "NewsLetters", null, new { @class = "btn btn-white" })
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target=".delete-Panel">Șterge</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    
+
+                    <div class="modal delete-Panel" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                @using (Html.BeginForm("DeleteNewsLetter", "HistoryDataManagement", FormMethod.Post, new { id = "delete-form" }))
+                                {
+                                    @Html.HiddenFor(model => model.IdClone)
+
+                                    <div class="wrapper wrapper-content animated fadeInRight">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="ibox float-e-margins">
+                                                    <div class="ibox-content">
+                                                        <h4 class="text-danger">Sigur stergeti ?</h4>
+                                                        <dl class="dl-horizontal">
+                                                            <dt>
+                                                                @Html.DisplayNameFor(model => model.Header)
+                                                            </dt>
+                                                            <dd>
+                                                                @Html.DisplayFor(model => model.Header)
+                                                            </dd>
+                                                        </dl>
+                                                        <dl class="dl-horizontal">
+                                                            <dt>
+                                                                <a class="btn btn-primary" href="#delete" onclick="javascript:$('form#delete-form').submit();">Sterge</a>
+                                                            </dt>
+                                                            <dd>
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Înapoi</button>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function deleteItem(item) {
+        $("#delete-panel").show();
+        $('#delete-panel').modal();
+    }
+</script>

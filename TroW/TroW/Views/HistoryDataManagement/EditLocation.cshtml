@@ -1,0 +1,129 @@
+﻿@model TroW.Models.StatieViewModel
+@{
+    ViewBag.Title = "Editeaza NewsLetter";
+}
+
+<script src="../../Scripts/locationpicker.jquery.min.js"></script>
+<h2>Editeaza Statie</h2>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-horizontal col-md-10">
+                            @Html.ValidationSummary(true)
+                            @Html.HiddenFor(model => model.CodStatie)
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        <label class="control-label">Nume stație</label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        @Html.EditorFor(model => model.NumeStatie, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.NumeStatie)
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        <label class="control-label">Coordonate</label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        @Html.EditorFor(model => model.LatLong, new {@class = "form-control"})
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-4 col-md-10">
+                                        <input type="submit" value="Salvează" class="btn btn-primary" />
+                                        @Html.ActionLink("Înapoi", "Locations", null, new { @class = "btn btn-white" })
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target=".delete-Panel">Șterge</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div id="us2" style="width: 120%; height: 650px;"></div>
+                                <input type="hidden" id="us2-lat" name="Lat" />
+                                <input type="hidden" id="us2-lon" name="Long" />
+                            </div>
+
+
+                        </div>
+                    }
+
+
+
+                    <div class="modal delete-Panel" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                @using (Html.BeginForm("SetLocationInactive", "HistoryDataManagement", FormMethod.Post, new { id = "delete-form" }))
+                                {
+                                    @Html.HiddenFor(model => model.CodStatieClone)
+
+                                    <div class="wrapper wrapper-content animated fadeInRight">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="ibox float-e-margins">
+                                                    <div class="ibox-content">
+                                                        <h4 class="text-danger">Sigur stergeti ?</h4>
+                                                        <dl class="dl-horizontal">
+                                                            <dt>
+                                                                Nume stație
+                                                            </dt>
+                                                            <dd>
+                                                                @Html.DisplayFor(model => model.NumeStatie)
+                                                            </dd>
+                                                        </dl>
+                                                        <dl class="dl-horizontal">
+                                                            <dt>
+                                                                <a class="btn btn-primary" href="#delete" onclick="javascript:$('form#delete-form').submit();">Șterge</a>
+                                                            </dt>
+                                                            <dd>
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Inapoi</button>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var locationMap;
+    locationMap = { latitude: 45.9925675, longitude: 25.9107401 };
+    if ($("#LatLong").val().length > 1) {
+        var currentLocation = $("#LatLong").val();
+        locationMap = { latitude: 45.992275, longitude: 15.9107401 };
+        var lat = parseFloat(currentLocation.split(" ")[0].substring(0, currentLocation.split(" ")[0].length - 1));
+        var lng = parseFloat(currentLocation.split(" ")[1]);
+        locationMap = { latitude: lat, longitude: lng };
+    }
+    $('#us2').locationpicker({
+        location: locationMap,
+        radius: 100,
+        zoom: 6,
+        inputBinding: {
+            latitudeInput: $('#us2-lat'),
+            longitudeInput: $('#us2-lon')
+        },
+        onchanged: function () {
+            $("#LatLong").val($("#us2-lat").val() + ", " + $("#us2-lon").val());
+        }
+    });
+    function deleteItem(item) {
+        $("#delete-panel").show();
+        $('#delete-panel').modal();
+    }
+
+
+</script>

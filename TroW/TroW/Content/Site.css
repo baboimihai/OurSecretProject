@@ -10,10 +10,11 @@ body {
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     margin: 0;
     padding: 0;
+    color: #0d3552;
 }
 
 a {
-    color: #333;
+    color: #0D3552;
     outline: none;
     padding-left: 3px;
     padding-right: 3px;
@@ -22,7 +23,7 @@ a {
 
     a:link, a:visited,
     a:active, a:hover {
-        color: #333;
+        color: #0D3552;
     }
 
     a:hover {
@@ -93,11 +94,12 @@ h5, h6 {
 ----------------------------------------------------------*/
 .content-wrapper {
     margin: 0 auto;
-    max-width: 1160px;
+    margin-left: 2%;
+    margin-right: 2%
 }
 
 #body_div {
-    background-color: #efeeef;
+    background-color: rgba(160, 175, 197, 0.11);
     clear: both;
     padding-bottom: 35px;
 }
@@ -141,13 +143,11 @@ footer {
 ----------------------------------------------------------*/
 #login {
     display: block;
-    font-size: .85em;
     margin: 0 0 10px;
     text-align: right;
 }
 
     #login a {
-        background-color: #d3dce0;
         margin-left: 10px;
         margin-right: 3px;
         padding: 2px 3px;
@@ -384,7 +384,7 @@ aside {
 }
 
 .contact iframe {
-    border: 1px solid #333;
+    border: 1px solid #0D3552;
     margin: 5px 0 0 10px;
 }
 
@@ -421,8 +421,8 @@ label {
 input, textarea {
     border: 1px solid #e2e2e2;
     background: #fff;
-    color: #333;
-    font-size: 1.2em;
+    color: #0D3552;
+    font-size: 1.1em;
     margin: 5px 0 6px 0;
     padding: 5px;
     width: 300px;
@@ -701,28 +701,6 @@ tr.pager td {
     }
 
 
-    /* forms */
-    input {
-        width: 90%;
-    }
-
-    /* login page */
-    #loginForm {
-        border-right: none;
-        float: none;
-        width: auto;
-    }
-
-        #loginForm .validation-error {
-            display: block;
-            margin-left: 15px;
-        }
-
-    #socialLoginForm {
-        margin-left: 0;
-        float: none;
-        width: auto;
-    }
 
 
     /* footer
@@ -758,4 +736,34 @@ span.badge.pull-left {
 
 .table td {
    text-align: center;   
+}
+#parent{
+    position:absolute;
+    height:100%;
+    margin:0;
+    padding:0;
+    width:100%;
+}
+#resizable{
+    position:relative;
+    float:left;
+    height:100%;
+    width:50%;
+}
+#mirror{
+    position:relative;
+    float:right;
+    height:100%;
+    width:50%;
+}
+.ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-gripsmall-diagonal-se {
+    color: red;
+    border: 2px
+}
+
+#delete-panel {
+    z-index: 300;
+}
+.label-in-line {
+    margin-top: 5px
 }

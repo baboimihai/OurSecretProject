@@ -1,0 +1,305 @@
+﻿@{
+    ViewBag.Title = "Înregistrare";
+}
+
+<h4 style="display: none">Conectare</h4>
+<div class="container">
+    <div id="loginbox" style="margin-top: 50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Accesare cont</div>
+                <div style="float: right; font-size: 80%; position: relative; top: -10px">
+                    <a  href="#passwordForgatbox" onclick="$('#signupbox').hide(); $('#loginbox').hide(); $('#passwordForgatbox').show()">Ati uitat parola?</a>
+                </div>
+            </div>
+
+            <div style="padding-top: 30px" class="panel-body">
+
+                <div style="display: none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="loginEmail" type="text" class="form-control" name="Username" value="" placeholder="Email">
+                    </div>
+
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="loginPasswd" type="password" class="form-control" name="Password" placeholder="Parola">
+                    </div>
+                    <div style="margin-top: 10px" class="form-group">
+                        <!-- Button -->
+
+                        <div class="col-sm-12 controls">
+                            <a id="btn-login" href="#" class="btn btn-success">Conecteaza-te </a>
+                            <a id="btn-fblogin" href="#" class="btn btn-primary" onclick="_FBSignIn();">Conectează-te cu  Facebook</a>
+
+                        </div>
+                    </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-12 control">
+                        <div style="border-top: 1px solid #888; padding-top: 15px; font-size: 85%">
+                            Nu am un cont!
+                            <a href="#" onclick="$('#loginbox').hide(); $('#signupbox').show()">
+                                Inregistreaza-te aici
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="signupbox" style="display: none; margin-top: 50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Inregistrare</div>
+                <div style="float: right; font-size: 85%; position: relative; top: -10px">
+                    <a id="signinlink" href="#" onclick="$('#signupbox').hide();$('#loginbox').show()">Conectare</a>
+                </div>
+            </div>
+            <div class="panel-body">
+                    <div id="signupalert" style="display: none" class="alert alert-danger">
+                        <p>Error:</p>
+                        <span></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Email</label>
+                        <div class="col-md-9">
+                            <input id="signupEmail" type="text" class="form-control" name="Email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label  class="col-md-3 control-label">Prenume</label>
+                        <div class="col-md-9">
+                            <input id="signupFirstName" type="text" class="form-control" name="FirstName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-md-3 control-label">Nume</label>
+                        <div class="col-md-9">
+                            <input id="signupLastName" type="text" class="form-control" name="LastName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Parola</label>
+                        <div class="col-md-9">
+                            <input id="signupPasswd" type="password" class="form-control" name="Passwd">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <!-- Button -->
+                        <div class="col-md-offset-3 col-md-9">
+                            <input type="hidden" name="Register" value="True" />
+                            <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i> Conectare</button>
+                            <span style="margin-left: 8px;">sau</span>
+                        </div>
+                    </div>
+                    <div style="border-top: 1px solid #999; padding-top: 20px" class="form-group">
+
+                        <div class="col-md-offset-3 col-md-9">
+                            <button id="btn-fbsignup" type="button" class="btn btn-primary" onclick="_FBSignUp();"><i class="icon-facebook"></i> Conectare cu Facebook</button>
+                        </div>
+
+                    </div>          
+            </div>
+        </div>
+    </div>
+    <div id="passwordForgatbox" style="margin-top: 50px; display: none;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Accesare cont</div>
+                <div style="float: right; font-size: 80%; position: relative; top: -10px">
+                    <a id="forgatEmaillink" href="#" onclick="$('#signupbox').hide(); $('#passwordForgatbox').hide(); $('#loginbox').show()">Accesare cont</a>
+                </div>
+            </div>
+
+            <div style="padding-top: 30px" class="panel-body">
+
+                <div style="display: none" id="forgatEmail-alert" class="alert alert-danger col-sm-12"></div>
+
+
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="forgatEmail" type="text" class="form-control" name="Email" value="" placeholder="Email">
+                    </div>
+                    <div style="margin-top: 10px" class="form-group">
+                        <div class="col-sm-12 controls">
+                            <a id="btn-resend-password" href="#" class="btn btn-success">Trimite email pentru resetare</a>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="passwordForgatResended" style="margin-top: 50px;display: none;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Resetare parolă</div>
+                <div style="float: right; font-size: 80%; position: relative; top: -10px">
+                    <a id="passwordForgatResendedlink" href="#" onclick="$('#signupbox').hide(); $('#passwordForgatbox').hide();$('#passwordForgatResended').hide(); $('#loginbox').show()">Accesare cont</a>
+                </div>
+            </div>
+
+            <div style="padding-top: 30px" class="panel-body">
+
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="Passwd1" type="password" class="form-control" name="Email" value="" placeholder="Parola">
+                    </div>
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="Passwd2" type="password" class="form-control" name="Email" value="" placeholder="Parola">
+                    </div>
+                    <div style="margin-top: 10px" class="form-group">
+                        <div class="col-sm-12 controls">
+                            <a id="btn-set-password" href="#" class="btn btn-success">Salvează</a>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<input value="@ViewBag.Guid" id="GuidPassword" type="hidden" />
+<script type="text/javascript">
+    var map;
+    var isFacebookSignIn = false;
+    $(document).ready(function () {
+    if ($("#GuidPassword").val().length > 1) {
+        $('#loginbox').hide();
+        $("#passwordForgatResended").show();
+    }
+    });
+    $("#btn-signup").click(function () {
+        var dataToSend = {
+            "FirstName": $("#signupFirstName").val(),
+            "LastName": $("#signupLastName").val(),
+            "Email": $("#signupEmail").val(),
+            "Password": $("#signupPasswd").val(),
+            "Register": true
+        };
+        SendData(dataToSend);
+    });
+    $("#btn-set-password").click(function() {
+        var dataToSend = {
+            "ForgatPasswordGuid": $("#GuidPassword").val(),
+            "Password1": $("#Passwd1").val(),
+            "Password": $("#Passwd2").val(),
+            "ResetPassword": true
+        };
+        SendData(dataToSend);
+    });
+    $("#btn-resend-password").click(function() {
+        var dataToSend = {
+            "Email": $("#forgatEmail").val(),
+            "ForgatEmail": true
+        };
+        SendData(dataToSend);
+    });
+    $("#btn-login").click(function () {
+        var dataToSend = {
+            "Email": $("#loginEmail").val(),
+            "Password": $("#loginPasswd").val(),
+            "Login": true
+        };
+        SendData(dataToSend);
+
+    });
+    function SendData(dataToSend) {
+        $.ajax({
+            async: false,
+            cache: false,
+            type: "POST",
+            url: "@(Url.Action("Login", "Home"))",
+            data: dataToSend,
+            success: function (data) {
+                if (data.success === true) {
+                    toastr.success("Logare", "V-ati logat cu succes!").delay(3000);
+                    window.location.href = "@(Url.Action("Index", "Home"))";
+                }
+            },
+            error: function () {
+                toastr.warning("Logare", "Logare esuata!");
+            }
+        });
+    }
+
+    (function (thisdocument, scriptelement, id) {
+        var js, fjs = thisdocument.getElementsByTagName(scriptelement)[0];
+        if (thisdocument.getElementById(id)) return;
+
+        js = thisdocument.createElement(scriptelement);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js"; //you can use
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '232968813722514',
+            cookie: true,
+            // the session
+            xfbml: true,
+            version: 'v2.4' // use version 2.1
+        });
+
+        // These three cases are handled in the callback function.
+
+
+    };
+
+    // This is called with the results from from FB.getLoginStatus().
+    function statusChangeCallback(response) {
+        if (response.status === 'connected') {
+            // Logged into your app and Facebook.
+            _i();
+        } else if (response.status === 'not_authorized') {
+            // The person is logged into Facebook, but not your app.
+            document.getElementById('status').innerHTML = 'Please log ' +
+                'into this app.';
+        }
+    }
+
+    function _FBSignUp() {
+        FB.login(function (response) {
+            // handle the response
+            if (response.status === 'connected') {
+                _i();
+            }
+        }, { scope: 'public_profile,email' });
+    }
+
+    function _FBSignIn() {
+        isFacebookSignIn = true;
+        FB.getLoginStatus(function (response) {
+            statusChangeCallback(response);
+
+        });
+    }
+
+    function _i() {
+        FB.api('/me', function (response) {
+            if (isFacebookSignIn === true) {
+                var dataToSend = {
+                    "IdFacebook": response.id,
+                    "IsFacebook": true,
+                    "Login": true
+                };
+                SendData(dataToSend);
+                isFacebookSignIn = false;
+            } else {
+                var dataToSend = {
+                    "IdFacebook": response.id,
+                    "FirstName": response.name,
+                    "IsFacebook": true,
+                    "Register": true
+                };
+                SendData(dataToSend);
+            }
+        });
+    }
+
+</script>

@@ -1,0 +1,12 @@
+﻿@using TroW.Identity
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@{
+    if (Identity.Current.Customer != null)
+    {
+        <label> is customer</label>
+    }
+}

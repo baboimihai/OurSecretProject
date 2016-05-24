@@ -188,6 +188,8 @@ C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\TroW\bin\zh-Hans\System.Spa
 C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\TroW\bin\zh-Hant\System.Spatial.resources.dll
 C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\TroW\obj\trow\TroW.csprojResolveAssemblyReference.cache
 C:\Users\atimofte\Source\Repos\OurSecretProject\TroW\TroW\obj\trow\TroW.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\Content\bootstrap\bootstrap.css
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\Scripts\jquery-1.9.1.min.js
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\Images\train_icon.png
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\TroW.dll.config
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\TroW.dll
@@ -215,6 +217,7 @@ C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\MongoDB.Bson.dll
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\MongoDB.Driver.Core.dll
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\MongoDB.Driver.dll
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\MongoDB.Driver.Legacy.dll
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\MoreLinq.dll
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\Newtonsoft.Json.dll
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\Owin.dll
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\Services.dll
@@ -245,6 +248,7 @@ C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\Microsoft.Owin.Secu
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\MongoDB.Bson.xml
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\MongoDB.Driver.xml
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\MongoDB.Driver.Legacy.xml
+C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\MoreLinq.xml
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\SimpleInjector.xml
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\SimpleInjector.Integration.Web.xml
 C:\Users\Baboias\Source\Repos\OurSecretProject\TroW\TroW\bin\SimpleInjector.Integration.Web.Mvc.xml

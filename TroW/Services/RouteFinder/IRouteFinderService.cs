@@ -9,6 +9,7 @@ namespace Services.RouteFinder
 {
     public interface IRouteFinderService
     {
-        RouteFinderOutputDto FindRoute(RouteFinderInputDto route);
+        AllRoutesResultsDto FindRoute(RouteFinderInputDto route);
+        List<StatieDto> GetStationThatHaveNameWithTerm(string term);
     }
 }

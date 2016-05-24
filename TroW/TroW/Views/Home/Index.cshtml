@@ -1,31 +1,309 @@
 ﻿
-<h3>
-    Titlu index
-</h3>
-<div class="input-group col-md-12">
-    <div>
-        <div class="col-lg-2" style="display: inline-block">
-            Statie de plecareaa
+<div class="col-lg-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h3>Cauta ruta</h3>
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                @using (Html.BeginForm("Route", "Home", FormMethod.Post, new { id = "form" }))
+                {
+                    <div class="ibox-content">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-md-2 label-in-line">
+                                    Dată plecare
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <input id="leavingDate" class="form-control" name="leavingDate" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
 
-        <div class="col-lg-6">
-            <input type="text" class="form-control"/>
-        </div>
-    </div>
-    <div>
-        <div class="col-lg-2" style="display: inline-block">
-            Statie de sosire
-        </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2 label-in-line">
+                                    Cu plecare între ora
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group clockpicker">
+                                        <input type="text" class="form-control" value="00:00" name="startTime">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-time"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 label-in-line">
+                                    și
+                                </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group clockpicker">
+                                            <input type="text" class="form-control" value="00:00" name="endTime">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-time"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
 
-        <div class="col-lg-6">
-            <input type="text" class="form-control"/>
+                            <div class="form-group">
+                                <div class="col-md-2 label-in-line">
+                                    Plecare
+                                </div>
+                                <div class="col-md-7">
+                                    <input placeholder="Statie" class="form-control searchByName" id="stationIndex_0">
+                                    <input type="hidden" id="minuteIndex_0" value="0" />
+                                </div>
+                                <div class="col-md-1" id="point0">
+                                    <img src="../../Content/fonts/images/glyphicons-191-plus-sign.png" alt="+" onclick="addPoint()" style="margin-top: 4px"/>
+                                </div>
+                            </div>
+                            <div id="pointsContainer"></div>
+                            <div class="form-group">
+                                <div class="col-md-2 label-in-line">
+                                    Destinație
+                                </div>
+
+                                <div class="col-md-7">
+                                    <div id="containerDataSearched" style="display: none"></div>
+                                    <input placeholder="Statie" class="form-control searchByName" id="stationIndex_X">
+                                </div>
+                            </div>
+                            <div class="col-md-offset-2">
+                                <input value="Calculează rute" class="btn btn-primary" onclick="submitForm(this)" style="margin-left: 5px"/>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+            <div class="col-md-5">
+                <div id="map" style="height: 650px; width: 130%; -ms-border-radius: 25px; border-radius: 25px;margin-left: -100px"></div>
+            </div>
         </div>
     </div>
 </div>
-<ul>
+<input type="hidden" value="0" id="lastIndexStation" />
+
+@*<div class="form-group">
+        <div class="col-lg-offset-3 col-md-5">
+            <div class="input-group">
+                <input type="hidden" value="" name="" />
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a id="selectedType"> Via </a> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a onclick="via()">Via</a></li>
+                        <li><a onclick="exclude()">Exclude</a></li>
+                    </ul>
+                </div>
+                <input type="number" placeholder="Minute minim de așteptare" class="form-control" style="margin-bottom: 5px">
+                <input placeholder="Statie" class="form-control searchByName">
+            </div>
+        </div>
+        <div class="col-md-1" style="margin-right:-45px">
+            <img src="../../fonts/images/glyphicons-191-plus-sign.png" alt="+" onclick="addPoint()" style="margin-top: 4px"/>
+
+        </div>
+        <div class="col-md-1">
+            <img src="../../fonts/images/glyphicons-192-minus-sign.png" alt="+" onclick="dropPoint()" style="margin-top: 4px" />
+        </div>
+    </div>*@
 
 
-</ul>
-<div>
-</div>
 
+
+
+
+<script>
+    var map;
+    $(document).ready(function () {
+
+        $('#leavingDate').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            format: 'yyyy-mm-dd',
+        });
+        $('.clockpicker').clockpicker({
+            donetext: 'Gata'
+        });
+
+        $("#lastIndexStation").val(0);
+        var searchBox = 'input.searchByName';
+        $(document).on('keydown.autocomplete', searchBox, function () {
+            $(this).autocomplete({
+                minLength: 2,
+                source: function (request, response) {
+                    var customer = new Array();
+                    $.ajax({
+                        async: false,
+                        cache: false,
+                        type: "GET",
+                        url: "@(Url.Action("GetStationByName", "Home"))",
+                        data: { "term": request.term },
+                        success: function (data) {
+                            if (data.length === 0) {
+                                if ($("#stationIndex_0").val() === request.term) {
+                                    $("#0_CodStatie").remove();
+                                    $("#0_Optiune").remove();
+                                } else {
+                                    $("#1000_CodStatie").remove();
+                                    $("#1000_Optiune").remove();
+                                }
+
+                            }
+                            for (var i = 0; i < data.length; i++) {
+                                customer[i] = { label: data[i].Value, Id: data[i].Key };
+                            }
+                        }
+                    });
+                    response(customer);
+                },
+                select: function (data, selectedItem) {
+
+                    var stationCode = selectedItem.item.Id;
+                    var stationIndex = this.id;
+                    if (stationIndex === "stationIndex_X")
+                        addDataForSave(1000, stationCode, "Via");
+                    else {
+                        var indexNumber = parseInt(stationIndex.substr(stationIndex.lastIndexOf('_') + 1, stationIndex.length));
+                        var optionId = "#selectedType" + indexNumber;
+                        var option = $(optionId);
+                        var selectedOption = option.val($(this).text());
+                        var checkExistingCodStatie = "#" + indexNumber + "_CodStatie";
+                        if ($(checkExistingCodStatie).length) {
+                            $(checkExistingCodStatie).val(stationCode);
+                            var existingOption = "#" + indexNumber + "_Optiune";
+                            $(existingOption).val(selectedOption.text());
+                        } else {
+                            var optionText = selectedOption.text();
+                            if (indexNumber === 0) {
+                                optionText = "Via";
+                            }
+                            addDataForSave(indexNumber, stationCode, optionText);
+                        }
+                    }
+
+                }
+            });
+        });
+        initMap();
+    });
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 45.9925675, lng: 25.9107401 },
+            zoom: 6
+        });
+    }
+    //45.9925675,25.9107401,7.17z
+    function addDataForSave(indexNumber, stationCode, optionText) {
+        var container = $("#containerDataSearched");
+        var statieCod = "<input id=\"" + indexNumber + "_CodStatie\" name=\"" + "[" + indexNumber + "].CodStatie" + "\" type=\"hidden\" value=\"" + stationCode + "\">";
+        var optionSelected = "<input id=\"" + indexNumber + "_Optiune\"  name=\"" + "[" + indexNumber + "].Optiune" + "\" type=\"hidden\" value=\"" + optionText + "\">";
+        container.append(statieCod);
+        container.append(optionSelected);
+    }
+
+    function addPoint() {
+        var lastIndex = parseInt($("#lastIndexStation").val());
+        if (!$("#" + lastIndex + "_CodStatie").length)
+            return;
+        lastIndex += 1;
+        var container = $("#pointsContainer");
+        var text = "<div  id=\"PointOfRoot" + lastIndex + "\">" +
+            "<div class=\"form-group\" >" +
+            "<div class=\"col-lg-offset-3 col-md-6\">" +
+            "<div class=\"input-group\">" +
+            "<input type=\"hidden\" value=\"\" name=\"\"/>" +
+            "<div class=\"input-group-btn\">" +
+            "<button type=\"button\" class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">" +
+            "<a id=\"selectedType" + lastIndex + "\"> Via </a> <span class=\"caret\"></span>" +
+            "</button>" +
+            "<ul class=\"dropdown-menu\">" +
+            "<li><a onclick=\"via(" + lastIndex + ")\">Via</a></li>" +
+            "<li><a onclick=\"exclude(" + lastIndex + ")\">Exclude</a></li>" +
+            "</ul>" +
+            "</div>" +
+            "<input type=\"number\" placeholder=\"Minute minim de așteptare\" class=\"form-control\" style=\"margin-bottom: 5px\" id=\"minuteIndex_"+lastIndex+"\">"+
+            "<input placeholder=\"Statie\" class=\"form-control searchByName\" id=\"stationIndex_" + lastIndex + "\">" +
+            "</div>" +
+            "</div>" +
+            "<div class=\"col-md-1\" id=\"point" + lastIndex + "\" style=\"margin-right:-45px\">" +
+            " <img src=\"../../Content/fonts/images/glyphicons-191-plus-sign.png\" alt=\"+\" onclick=\"addPoint(" + lastIndex + ")\" style=\"margin-top: 4px\"/>" +
+            "</div>" +
+            "<br/>" +
+            "</div>";
+
+        //name=\"" + "[" + i + "].ResourceKey"
+        $("#lastIndexStation").val(lastIndex);
+        var lastPoint = "#point" + (lastIndex - 1);
+        $(lastPoint).hide();
+        $("#point1").hide();
+        container.append(text);
+    }
+    function exclude(lastIndex) {
+        var id = "#selectedType" + lastIndex;
+        var x = $(id);
+        x.empty();
+        x.append("Exclude");
+        var existingOption = "#" + lastIndex + "_Optiune";
+        if ($(existingOption).length)
+            $(existingOption).val("Exclude");
+        var minuteElement = $("#minuteIndex_" + lastIndex);
+        minuteElement.val(0);
+        minuteElement.hide();
+    }
+
+    function via(lastIndex) {
+        var id = "#selectedType" + lastIndex;
+        var x = $(id);
+        x.empty();
+        x.append("Via");
+
+        var existingOption = "#" + lastIndex + "_Optiune";
+        if ($(existingOption).length)
+            $(existingOption).val("Via");
+        $("#minuteIndex_" + lastIndex).show();
+    }
+
+    function submitForm() {
+        if (!$("#1000_CodStatie").length || $("#stationIndex_X").val().length <= 2) {
+            toastr.error("Eroare", "Statie de destinatie invalida");
+            return;
+        }
+
+        if (!$("#0_CodStatie").length || $("#stationIndex_0").val().length <= 2) {
+            toastr.error("Eroare", "Statie de plecare invalida");
+            return;
+        }
+
+        var lastIndex = parseInt($("#lastIndexStation").val());
+        var lastStation = $("#1000_CodStatie");
+        var lastStationCode = lastStation.val();
+        lastStation.remove();
+        $("#1000_Optiune").remove();
+        if ($("#" + lastIndex + "_CodStatie").length)
+            addDataForSave(lastIndex + 1, lastStationCode, "Via");
+        else {
+            addDataForSave(lastIndex, lastStationCode, "Via");
+        }
+        for (var i = 0; i <= lastIndex+1; i++) {
+            var element = $("#minuteIndex_" + i);
+            var value = 0;;
+            if (element.length > 0)
+                value = element.val();
+            var container = $("#containerDataSearched");
+            var minute = "<input id=\"" + i + "_MinuteAsteptare\" name=\"" + "[" + i + "].MinuteAsteptare" + "\" type=\"hidden\" value=\"" + value + "\">";
+            container.append(minute);
+        }
+        $('form#form').submit();
+    }
+
+</script>

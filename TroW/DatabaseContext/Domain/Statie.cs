@@ -11,5 +11,6 @@ namespace DatabaseContext.Domain
         public int CodStatie { get; set; }
         public string NumeStatie { get; set; }
         public string LatLong { get; set; }
+        public bool IsInactive { get; set; }
     }
 }
