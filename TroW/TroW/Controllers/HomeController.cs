@@ -6,6 +6,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using MoreLinq;
 using Services.CustomersService;
 using Services.CustomerService;
 using Services.HistoryDataManagement;
@@ -61,7 +62,7 @@ namespace TroW.Controllers
                  select new NewsLetterViewModel { Header = x.Header, Message = x.Message }).ToList();
             return PartialView(news);
         }
-        
+
 
         [HttpPost]
         public ActionResult Route(List<Destinations> destinations, string startTime, string endTime, DateTime? leavingDate, bool? reverse)
@@ -75,6 +76,7 @@ namespace TroW.Controllers
 
                 if (reverse.HasValue && reverse.Value)
                     searchedInput.StationToGoThrow.Reverse();
+            searchedInput.YearIdentifier = DateTime.Now.Year.ToString();
             var resultDto = _routeFinderService.FindRoute(searchedInput);
             var route = ConvertResultToViewModel(resultDto);
             var allPoints = route.Routes.SelectMany(x => x.Points).ToList();
@@ -104,21 +106,13 @@ namespace TroW.Controllers
             return searchedInput;
 
         }
-        public ActionResult RouteBySearchId(Guid? id)
-        {
-            if (id.HasValue)
-            {
-                var settings = _dataManagementService.GetUserSearch(id.Value);
-                return RedirectToAction("Route", settings);
-            }
-            return RedirectToAction("Index");
-        }
 
         public ActionResult Route(Guid? id)
         {
             if (id.HasValue)
             {
                 var settings = _dataManagementService.GetUserSearch(id.Value);
+                settings.YearIdentifier = DateTime.Now.Year.ToString();
                 var resultDto = _routeFinderService.FindRoute(settings);
                 var route = ConvertResultToViewModel(resultDto);
                 route.Input = settings;
@@ -201,7 +195,7 @@ namespace TroW.Controllers
         private AllRoutesResults ConvertResultToViewModel(AllRoutesResultsDto reusltDto)
         {
             var routeOutput = new AllRoutesResults();
-            routeOutput.Routes=new List<Route>();
+            routeOutput.Routes = new List<Route>();
             foreach (var route in reusltDto.Routes)
             {
                 var newRoute = new Route();
@@ -221,7 +215,7 @@ namespace TroW.Controllers
                             .ToString(@"hh\:mm\:ss");
                 });
 
-                
+
                 routeOutput.Routes.Add(newRoute);
             }
             return routeOutput;
@@ -239,13 +233,51 @@ namespace TroW.Controllers
             var searchedInput = SetRouteInput(destinations, startTime, endTime, leavingDate, reverse);
             var statistiscDto = _dataManagementService.GetStatistics(searchedInput);
             var statistics = (from x in statistiscDto
-                select new Statistics
+                              select new Statistics
+                              {
+                                  YearIdentifier = x.YearIdentifier,
+                                  TotalDuration = (from t in x.TotalDuration select new RouteDurationViewModel { Duration = TimeSpan.FromSeconds(t.Duration).ToString(@"hh\:mm\:ss") }).ToList()
+                              }).ToList();
+
+            var allRoutesDetails = new List<RoutePartialDurationViewModel>();
+            var allyearsIdentifier = statistiscDto.Select(x => x.YearIdentifier).ToList();
+            statistiscDto.ForEach(yearStat =>
+            {
+                yearStat.TotalPartialDuration.ForEach(y =>
                 {
-                    YearIdentifier = x.YearIdentifier,
-                    TotalPartialDuration = (from y in x.TotalPartialDuration select y).ToList(),
-                    TotalDuration = (from t in x.TotalDuration select t).ToList()
-                }).ToList();
-            return PartialView("Statistics",statistics);
+                    allRoutesDetails.Add(new RoutePartialDurationViewModel
+                    {
+                        StatieDestinatie = y.StatieDestinatie,
+                        StatiePlecare = y.StatiePlecare,
+                        Duration = TimeSpan.FromSeconds(y.Duration).ToString(@"hh\:mm\:ss"),
+                        YearIdentifier = yearStat.YearIdentifier
+                    });
+                });
+            });
+            
+            var routesDetailsViewModel = new List<RoutePartialDurationViewModel>();
+            var routes = allRoutesDetails.GroupBy(x => new { x.StatieDestinatie, x.StatiePlecare }).ToList();
+            foreach (var rout in routes)
+            {
+                var allRout = rout.ToList();
+                var currentRoutes =
+                    allRout.GroupBy(x => x.YearIdentifier).Where(g => g.Count() == 1).Select(g => g.First()).ToList();
+                var newRouteToBeAdded = new RoutePartialDurationViewModel
+                {
+                    StatieDestinatie = rout.Key.StatieDestinatie,
+                    StatiePlecare = rout.Key.StatiePlecare
+                };
+                var durations = new List<string>();
+                allyearsIdentifier.ForEach(year =>
+                {
+                    var currentYearValue = currentRoutes.SingleOrDefault(x => x.YearIdentifier == year);
+                    durations.Add(currentYearValue != null ? currentYearValue.Duration : "");
+                });
+                newRouteToBeAdded.YearResultDuration = durations;
+                routesDetailsViewModel.Add(newRouteToBeAdded);
+            }
+            ViewBag.RouteDetails = routesDetailsViewModel;
+            return PartialView("Statistics", statistics);
         }
     }
 }

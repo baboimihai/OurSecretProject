@@ -724,11 +724,11 @@ tr.pager td {
 span.badge.pull-left {
     margin-right: 10px;
     width: 60px;
+    color: grey;
 }
 
 #NewsLettersPartial {
     display: inline-block;
-    width: 285px;
     max-height: 550px!important;
     margin-top: 40px;
     margin-left: 15px;
@@ -766,4 +766,8 @@ span.badge.pull-left {
 }
 .label-in-line {
     margin-top: 5px
+}
+body .ui-autocomplete {
+    color: #337ab7;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }

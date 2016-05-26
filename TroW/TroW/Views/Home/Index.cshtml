@@ -1,89 +1,86 @@
 ﻿
-<div class="col-lg-12">
-    <div class="ibox float-e-margins">
-        <div class="ibox-title">
-            <h3>Cauta ruta</h3>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                @using (Html.BeginForm("Route", "Home", FormMethod.Post, new { id = "form" }))
-                {
-                    <div class="ibox-content">
-                        <div class="form-horizontal">
-                            <div class="form-group">
-                                <div class="col-md-2 label-in-line">
-                                    Dată plecare
-                                </div>
-                                <div class="col-md-7">
-                                    <div class="input-group">
-                                        <input id="leavingDate" class="form-control" name="leavingDate" />
-                                        <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
-                                    </div>
 
-                                </div>
+<div class="ibox float-e-margins">
+    <div class="ibox-title">
+        <h3>Cauta ruta</h3>
+    </div>
+    <div class="col-md-6">
+        @using (Html.BeginForm("Route", "Home", FormMethod.Post, new { id = "form" }))
+        {
+            <div class="ibox-content">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-2 label-in-line">
+                            Dată plecare
+                        </div>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <input id="leavingDate" class="form-control" name="leavingDate" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-2 label-in-line">
-                                    Cu plecare între ora
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="input-group clockpicker">
-                                        <input type="text" class="form-control" value="00:00" name="startTime">
-                                        <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-time"></span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="col-md-1 label-in-line">
-                                    și
-                                </div>
-                                    <div class="col-md-3">
-                                        <div class="input-group clockpicker">
-                                            <input type="text" class="form-control" value="00:00" name="endTime">
-                                            <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-time"></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
 
-                            <div class="form-group">
-                                <div class="col-md-2 label-in-line">
-                                    Plecare
-                                </div>
-                                <div class="col-md-7">
-                                    <input placeholder="Statie" class="form-control searchByName" id="stationIndex_0">
-                                    <input type="hidden" id="minuteIndex_0" value="0" />
-                                </div>
-                                <div class="col-md-1" id="point0">
-                                    <img src="../../Content/fonts/images/glyphicons-191-plus-sign.png" alt="+" onclick="addPoint()" style="margin-top: 4px"/>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2 label-in-line">
+                            Cu plecare între ora
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-group clockpicker">
+                                <input type="text" class="form-control" value="00:00" name="startTime">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
                             </div>
-                            <div id="pointsContainer"></div>
-                            <div class="form-group">
-                                <div class="col-md-2 label-in-line">
-                                    Destinație
-                                </div>
-
-                                <div class="col-md-7">
-                                    <div id="containerDataSearched" style="display: none"></div>
-                                    <input placeholder="Statie" class="form-control searchByName" id="stationIndex_X">
-                                </div>
-                            </div>
-                            <div class="col-md-offset-2">
-                                <input value="Calculează rute" class="btn btn-primary" onclick="submitForm(this)" style="margin-left: 5px"/>
+                        </div>
+                        <div class="col-md-1 label-in-line">
+                            și
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-group clockpicker">
+                                <input type="text" class="form-control" value="00:00" name="endTime">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
                             </div>
                         </div>
                     </div>
 
-                }
+                    <div class="form-group">
+                        <div class="col-md-2 label-in-line">
+                            Plecare
+                        </div>
+                        <div class="col-md-7">
+                            <input placeholder="Statie" class="form-control searchByName" id="stationIndex_0">
+                            <input type="hidden" id="minuteIndex_0" value="0" />
+                        </div>
+                        <div class="col-md-1" id="point0">
+                            <img src="../../Content/fonts/images/glyphicons-191-plus-sign.png" alt="+" onclick="addPoint()" style="margin-top: 4px" />
+                        </div>
+                    </div>
+                    <div id="pointsContainer"></div>
+                    <div class="form-group">
+                        <div class="col-md-2 label-in-line">
+                            Destinație
+                        </div>
+
+                        <div class="col-md-7">
+                            <div id="containerDataSearched" style="display: none"></div>
+                            <input placeholder="Statie" class="form-control searchByName" id="stationIndex_X">
+                        </div>
+                    </div>
+                    <div class="col-md-offset-2">
+                        <input value="Calculează rute" class="btn btn-primary" onclick="submitForm(this)" style="margin-left: 5px" />
+                    </div>
+                </div>
             </div>
-            <div class="col-md-5">
-                <div id="map" style="height: 650px; width: 130%; -ms-border-radius: 25px; border-radius: 25px;margin-left: -100px"></div>
-            </div>
-        </div>
+
+        }
+    </div>
+    <div class="col-md-5">
+        <div id="map" style="height: 650px; width: 130%; -ms-border-radius: 25px; border-radius: 25px;margin-left: -100px"></div>
     </div>
 </div>
 <input type="hidden" value="0" id="lastIndexStation" />
@@ -231,7 +228,7 @@
             "<li><a onclick=\"exclude(" + lastIndex + ")\">Exclude</a></li>" +
             "</ul>" +
             "</div>" +
-            "<input type=\"number\" placeholder=\"Minute minim de așteptare\" class=\"form-control\" style=\"margin-bottom: 5px\" id=\"minuteIndex_"+lastIndex+"\">"+
+            "<input type=\"number\" placeholder=\"Minute minim de așteptare\" class=\"form-control\" style=\"margin-bottom: 5px\" id=\"minuteIndex_" + lastIndex + "\">" +
             "<input placeholder=\"Statie\" class=\"form-control searchByName\" id=\"stationIndex_" + lastIndex + "\">" +
             "</div>" +
             "</div>" +
@@ -294,7 +291,7 @@
         else {
             addDataForSave(lastIndex, lastStationCode, "Via");
         }
-        for (var i = 0; i <= lastIndex+1; i++) {
+        for (var i = 0; i <= lastIndex + 1; i++) {
             var element = $("#minuteIndex_" + i);
             var value = 0;;
             if (element.length > 0)

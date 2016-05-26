@@ -22,8 +22,8 @@
                                         @for (int i = 0; i < route.Points.Count; i++)
                                         {
                                             <li class="@string.Concat("list-group-item ", i == 0 || i == route.Points.Count - 1 ? "" : "station-aux")" style="@string.Concat("display:", i == 0 || i == route.Points.Count - 1 ? "block" : "none")">
-                                                <span class="badge pull-left">@route.Points[i].OraAjungere</span>
-                                                <label style="color: darkblue">@route.Points[i].NumeStatie</label>
+                                                <span class="badge pull-left label-in-line" style="color:darkgray">@route.Points[i].OraAjungere</span>
+                                                <label style="color: #337AB7">@route.Points[i].NumeStatie</label>
                                                 <span style="display: none">@route.Points[i].LatLong</span>
                                             </li>
                                         }
@@ -53,11 +53,11 @@
                         <div class="col-lg-12">
                             <div class="ibox float-e-margins">
                                 <div class="ibox-content">
-                                    <h4 class="text-danger">Statistici</h4>
-                                    <dl class="dl-horizontal" id="statisticsContainer"></dl>
+                                    <h4 class="text-danger" style="margin-left: 5px">Statistici</h4>
+                                    <dl class="dl-horizontal" id="statisticsContainer" style="padding: 5px"></dl>
                                     <dl class="dl-horizontal">
                                         <dt>
-                                            <button type="button" class="btn btn-default col-md-offset-4" data-dismiss="modal">Inapoi</button>
+                                            <button type="button" class="btn btn-default col-md-offset-6" data-dismiss="modal">Inapoi</button>
                                         </dt>
                                         <dd>
                                             
@@ -113,19 +113,6 @@
     var markers = [];
     $(document).ready(function () {
         initMap();
-    });
-    $.fn.bootstrapSwitch.defaults.size = 'large';
-    $('.BSswitch').bootstrapSwitch({
-        'state': true,
-        "onText": '@Model.Routes[0].Points[0].NumeStatie - @Model.Routes[0].Points[Model.Routes[0].Points.Count-1].NumeStatie',
-        "offText": '@Model.Routes[0].Points[Model.Routes[0].Points.Count - 1].NumeStatie - @Model.Routes[0].Points[0].NumeStatie',
-        "text-label": 'back',
-        "handleWidth": 350
-
-    });
-
-    $('#TheCheckBox').on('switchChange.bootstrapSwitch', function () {
-
     });
 
     $("#resizable").resizable({
@@ -280,6 +267,7 @@
                 var container = $("#statisticsContainer");
                 container.empty();
                 container.append(view);
+                $(".statistics-table").dataTable();
             },
             error: function () {
                 toastr.warning("Statistici", "Nu au putut fi incarcate!");

@@ -87,7 +87,7 @@
             </div>
         </div>
     </header>
-    <main id="body_div" class="col-lg-12 " style="min-height: 800px;">
+    <main id="body_div" class=" " style="min-height: 800px;">
 
         <button id="resizeNewsLetterBig" class="glyphicon glyphicon glyphicon-resize-full pull-left" onclick="resizeNewsLetter('big')" data-toggle="popover" title="Noutati" data-content="Apasati butonul pentru maximizare!" style="display: none"></button>
         <div class="col-md-2" id="_partial_newsLettersPartial" style="padding-left: 5px;">
@@ -96,9 +96,9 @@
             </div>
         </div>
 
-        <section class="col-md-10 main-content clear-fix" id="_partial_main_Content">
+        <div class="col-md-10 main-content clear-fix" id="_partial_main_Content">
             @RenderBody()
-        </section>
+        </div>
     </main>
     <footer>
         <div class="content-wrapper">
@@ -118,19 +118,20 @@
         });
         function resizeNewsLetter(toView) {
             if (toView === "small") {
-                $("_partial_newsLettersPartial").hide();
-                $("#resizeNewsLetterSmall").hide();
+                $("NewsLettersPartial").hide();
+                $("#_partial_newsLettersPartial").removeClass("col-md-2");
+                $("#_partial_newsLettersPartial").hide();
                 $("#resizeNewsLetterBig").show();
                 $("#_partial_main_Content").removeClass("col-md-10");
                 $("#_partial_main_Content").addClass("col-md-12");
 
             } else {
+                $("#NewsLettersPartial").show();
+                $("#_partial_newsLettersPartial").addClass("col-md-2");
                 $("#_partial_newsLettersPartial").show();
-                $("#resizeNewsLetterSmall").show();
                 $("#resizeNewsLetterBig").hide();
                 $("#_partial_main_Content").removeClass("col-md-12");
                 $("#_partial_main_Content").addClass("col-md-10");
-                //$('div#map').width('100%');
             }
             $(window).trigger('resize');
         }

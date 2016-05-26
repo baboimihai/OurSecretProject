@@ -1,35 +1,74 @@
 ﻿@model List<TroW.Models.Statistics>
 
-<h3> Tot cele mai rapide rute</h3>
+<h3><label>Cele mai rapide rute</label> </h3>
 <table class="table table-striped table-bordered table-hover locations-table">
     <thead>
-        <tr>
-            @{
-                foreach (var year in Model)
-                {
-                    <th >
-                        
-                    </th>
-                }
+    <tr>
+        @{
+            <td><label>Anul</label></td>
+            foreach (var year in Model)
+            {
 
+                <th>
+                    <label>@year.YearIdentifier</label>
+                </th>
+            }
+
+        }
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+        <td><label>Durata celui celui mai scurt drum</label></td>
+        @foreach (var year in Model)
+        {
+            <th>
+                @year.TotalDuration[0].Duration
+            </th>
+        }
+    </tr>
+
+    </tbody>
+</table>
+<h4><label>Timpii de deplasare între statii</label> </h4>
+<table class="table table-striped table-bordered table-hover statistics-table">
+    <thead>
+        <tr>
+            <th>
+                <label>Statie plecare</label>
+            </th>
+            <th>
+                <label>Statie destinatie</label>
+            </th>
+            @foreach (var year in Model)
+            {
+
+                <th>
+                    <label>@year.YearIdentifier</label>
+                </th>
             }
 
         </tr>
     </thead>
     <tbody>
-        @for (int index = 0; index < Model.Count; index++)
+
+        @foreach (var route in ViewBag.RouteDetails)
         {
             <tr>
-                <td>
-                    <label class="control-label">@Model[index].YearIdentifier</label>
-                </td>
-                
-                @foreach (var route in Model[index].TotalDuration)
+                <th>
+                    @route.StatiePlecare
+                </th>
+                <th>
+                    @route.StatieDestinatie
+                </th>
+                @foreach (var duration in route.YearResultDuration)
                 {
-                    <td>@route.Duration</td>
+                    <th>@duration</th>
                 }
             </tr>
-
         }
-        </tbody>
-    </table>
+
+    </tbody>
+</table>

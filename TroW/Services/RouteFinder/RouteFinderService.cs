@@ -30,8 +30,12 @@ namespace Services.RouteFinder
             var point5 = new PointDto { OraAjungere = 3344,CodStatie = 115, StatieNume = "Costesti", Position = "44.6742056, 24.857733999999937" };
             var routeOutput = new AllRoutesResultsDto();
             routeOutput.Routes = new List<RouteDto>();
-            routeOutput.Routes.Add(new RouteDto {Points = new List<PointDto> {point1, point2}});
-            routeOutput.Routes.Add(new RouteDto { Points = new List<PointDto> { point4, point2, point1, point2 } });
+            if(route.YearIdentifier=="2016")
+            routeOutput.Routes.Add(new RouteDto { Points = new List<PointDto> { point4, point2, point1, point2, point4, point2, point1, point2 } });
+            if (route.YearIdentifier == "2015")
+                routeOutput.Routes.Add(new RouteDto { Points = new List<PointDto> { point1, point2, point5, point2, point2, point1, point5 } });
+            if (route.YearIdentifier == "2014")
+                routeOutput.Routes.Add(new RouteDto { Points = new List<PointDto> { point1, point2,  point3, point4, point5 } });
             return routeOutput;
         }
 
